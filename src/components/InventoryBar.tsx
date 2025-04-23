@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BlockType, getTexture } from '../Textures';
+import { InventoryItem } from './SharedUI';
 
 interface InventoryBarProps {
-  inventory: BlockType[];
+  inventory: InventoryItem[];
   selectedSlot: number;
   setSelectedSlot: (slot: number) => void;
 }
+
 
 const InventoryBar: React.FC<InventoryBarProps> = ({ inventory, selectedSlot, setSelectedSlot }) => {
   const handleScroll = (e: WheelEvent) => {
@@ -33,18 +35,19 @@ const InventoryBar: React.FC<InventoryBarProps> = ({ inventory, selectedSlot, se
 
   return (
     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex space-x-2">
-      {inventory.map((block, index) => (
+      {inventory.map((item, index) => (
         <div
           key={index}
-          className={`w-12 h-12 border-2 ${selectedSlot === index ? 'border-yellow-400' : 'border-gray-400'} bg-gray-800 flex justify-center items-center`}
+          className={`w-12 h-12 border-2 ${selectedSlot === index ? 'border-yellow-400' : 'border-gray-400'} bg-gray-800 flex justify-center items-center relative`}
         >
           <img
-            src={
-              getTexture(block, 'all').image.src
-            }
-            alt={block}
+            src={getTexture(item.type, 'all').image.src}
+            alt={item.type ?? ""}
             className="w-10 h-10"
           />
+          <span className="absolute bottom-0 right-0 text-xs text-white bg-opacity-75 px-1">
+            {item.count}
+          </span>
         </div>
       ))}
     </div>

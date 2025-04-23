@@ -27,9 +27,9 @@ export const textures = {
     all: textureLoader.load('https://raw.githubusercontent.com/nebulimity/MoreLikeMinecraft/refs/heads/main/default/default_wood.png')
   },
   crafting_table:{
-    top: textureLoader.load('/Crafting_Table_ 28top_texture 29_JE2_BE2.png'),
-    side: textureLoader.load('/Crafting_Table_ 28side_texture 29_JE4.png'),
-    front: textureLoader.load('/Crafting_Table_ 28front_texture 29_JE4.png'),
+    top: textureLoader.load('https://raw.githubusercontent.com/WoutBl/MinecraftReact/refs/heads/main/assets/Crafting_Table_%2028top_texture%2029_JE2_BE2.png'),
+    side: textureLoader.load('https://raw.githubusercontent.com/WoutBl/MinecraftReact/refs/heads/main/assets/Crafting_Table_%2028side_texture%2029_JE4.png'),
+    front: textureLoader.load('https://raw.githubusercontent.com/WoutBl/MinecraftReact/refs/heads/main/assets/Crafting_Table_%2028front_texture%2029_JE4.png'),
     bottom: textureLoader.load('https://raw.githubusercontent.com/nebulimity/MoreLikeMinecraft/refs/heads/main/default/default_wood.png'),
 
   }
@@ -46,7 +46,7 @@ Object.values(textures).forEach((block) => {
 export type BlockType = 'dirt' | 'grass' | 'stone' | 'wood' | 'sand' | 'crafting_table' | 'planks';
 
 
-export const getTexture = (type: BlockType, face: string) => {
+export const getTexture = (type: BlockType | null, face: string) => {
   
   switch (type) {
     case 'grass':
